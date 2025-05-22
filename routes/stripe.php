@@ -1,0 +1,11 @@
+<?php
+
+use App\Http\Controllers\Stripe\StripeCheckoutController;
+use Illuminate\Support\Facades\Route;
+use Laravel\Cashier\Http\Controllers\WebhookController as StripeWebhookController;
+
+Route::middleware('auth:sanctum')->prefix('/stripe')->name('stripe.')->group(function () {
+    Route::post('/checkout', StripeCheckoutController::class)->name('checkout');
+});
+
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook'])->name('stripe.webhook');
