@@ -25,6 +25,8 @@ describe('LoginController', function () {
                 'user'
             ]
         ]);
+
+        $this->assertAuthenticatedAs($user);
     });
 
     test('deve retornar erro se o email não for encontrado', function () {
