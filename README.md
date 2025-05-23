@@ -16,11 +16,13 @@ Antes de começar, verifique se você tem os seguintes itens instalados:
 
 ## ⚙️ Passo a passo para rodar o projeto
 
-### 1. Clonar o repositório
+### 1. Clonar o repositório e entrar na branch develop
 
 ```bash
 git clone https://github.com/LucasCavalheri/avalio-api
 cd avalio-api
+
+git checkout develop
 ```
 
 ### 2. Instalar as dependências
