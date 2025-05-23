@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->boolean('active')->default(true);
             $table->string('phone');
             $table->string('email');
             $table->string('banner_image')->nullable();

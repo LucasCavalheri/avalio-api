@@ -16,6 +16,8 @@ class SwapSubscriptionController extends Controller
 
         $priceId = $request->price === 'pro' ? config('services.stripe.pro_price_id') : config('services.stripe.basic_price_id');
 
+        $isDowngradingToBasic = $request->price === 'basic';
+
         /** @var \App\Models\User */
         $user = $request->user();
 
@@ -27,6 +29,17 @@ class SwapSubscriptionController extends Controller
                 'Não é possível alterar uma assinatura inexistente ou fora do período de carência',
                 Response::HTTP_BAD_REQUEST
             );
+        }
+
+        if ($isDowngradingToBasic) {
+            $activeBusinesses = $user->businesses()->where('active', true)->count();
+
+            if ($activeBusinesses > 1) {
+                return $this->error(
+                    'Você só pode ter 1 negócio ativo no plano básico. Inative os outros para concluir a mudança de plano.',
+                    Response::HTTP_BAD_REQUEST
+                );
+            }
         }
 
         $subscription->swap($priceId);

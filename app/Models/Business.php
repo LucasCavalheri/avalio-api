@@ -16,6 +16,7 @@ class Business extends Model
         'user_id',
         'name',
         'description',
+        'active',
         'phone',
         'email',
         'banner_image',
