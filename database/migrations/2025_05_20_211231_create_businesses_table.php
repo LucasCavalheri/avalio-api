@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('phone');
             $table->string('email');
-            $table->string('banner_image');
-            $table->string('cover_image');
+            $table->string('banner_image')->nullable();
+            $table->string('cover_image')->nullable();
             $table->string('state');
             $table->string('city');
             $table->string('neighborhood');
