@@ -5,10 +5,17 @@ use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Mockery\MockInterface;
+use Tests\Feature\Traits\FakeStorage;
 
 use function Pest\Laravel\actingAs;
 
+uses(FakeStorage::class);
+
 describe('CreateBusinessController', function () {
+    beforeEach(function () {
+        $this->setUpFakeStorage();
+    });
+
     test('cria um novo negócio com sucesso', function () {
         /** @var User&Authenticatable&MockInterface $user */
         $user = \Mockery::mock(User::class, Authenticatable::class)->makePartial();

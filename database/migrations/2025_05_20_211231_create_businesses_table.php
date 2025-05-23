@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->string('phone');
             $table->string('email');
-            $table->string('banner_image')->nullable();
+            $table->string('logo_image')->nullable();
             $table->string('cover_image')->nullable();
             $table->string('state');
             $table->string('city');

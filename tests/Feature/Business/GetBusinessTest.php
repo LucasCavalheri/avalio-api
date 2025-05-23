@@ -3,8 +3,15 @@
 use App\Models\Business;
 use App\Models\User;
 use Illuminate\Http\Response;
+use Tests\Feature\Traits\FakeStorage;
+
+uses(FakeStorage::class);
 
 describe('GetBusinessController', function () {
+    beforeEach(function () {
+        $this->setUpFakeStorage();
+    });
+
     test('retorna um negócio com sucesso', function () {
         $user = User::factory()->create();
         $business = Business::factory()->create([

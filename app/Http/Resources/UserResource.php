@@ -18,7 +18,24 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'phone' => $this->phone
+            'phone' => $this->phone,
+            'current_plan' => $this->getPlanName(),
         ];
+    }
+
+    private function getPlanName(): string|null
+    {
+        $subscription = $this->subscriptions()->where('stripe_status', 'active')->first();
+
+        if (!$subscription) {
+            return null;
+        }
+
+        $plans = [
+            config('services.stripe.pro_price_id') => 'PRO',
+            config('services.stripe.basic_price_id') => 'BASIC',
+        ];
+
+        return $plans[$subscription->stripe_price] ?? null;
     }
 }

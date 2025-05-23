@@ -19,7 +19,7 @@ class Business extends Model
         'active',
         'phone',
         'email',
-        'banner_image',
+        'logo_image',
         'cover_image',
         'state',
         'city',

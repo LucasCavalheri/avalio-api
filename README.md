@@ -81,3 +81,21 @@ Abra um novo terminal enquanto o servidor estiver rodando e execute o comando ab
 ```bash
 stripe listen --forward-to localhost:8000/api/stripe/webhook
 ```
+
+## 📂 Upload de arquivos
+
+### 1. Popular o .env com as variáveis de ambiente do S3 (pedir para o administrador)
+
+```bash
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=sa-east-1
+AWS_BUCKET=avalio-dev
+AWS_USE_PATH_STYLE_ENDPOINT=false
+```
+
+### 2. Ao rodar local, linkar o storage com a pasta public
+
+```bash
+php artisan storage:link
+```

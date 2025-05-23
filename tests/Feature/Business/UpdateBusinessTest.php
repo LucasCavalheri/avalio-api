@@ -5,10 +5,17 @@ use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Mockery\MockInterface;
+use Tests\Feature\Traits\FakeStorage;
 
 use function Pest\Laravel\actingAs;
 
+uses(FakeStorage::class);
+
 describe('UpdateBusinessController', function () {
+    beforeEach(function () {
+        $this->setUpFakeStorage();
+    });
+
     test('atualiza um negócio com sucesso', function () {
         $realUser = User::factory()->create();
 

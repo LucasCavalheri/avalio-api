@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class BusinessResource extends JsonResource
 {
@@ -19,6 +20,28 @@ class BusinessResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'phone' => $this->phone,
+            'logo_image' => $this->getLogoImageUrl(),
+            'cover_image' => $this->getCoverImageUrl(),
         ];
+    }
+
+    public function getLogoImageUrl(): string
+    {
+        $disk = config('app.env') === 'local' ? 'public' : 's3';
+
+        /** @var \Illuminate\Filesystem\FilesystemManager $storage */
+        $storage = Storage::disk($disk);
+
+        return $storage->url($this->logo_image);
+    }
+
+    public function getCoverImageUrl(): string
+    {
+        $disk = config('app.env') === 'local' ? 'public' : 's3';
+
+        /** @var \Illuminate\Filesystem\FilesystemManager $storage */
+        $storage = Storage::disk($disk);
+
+        return $storage->url($this->cover_image);
     }
 }

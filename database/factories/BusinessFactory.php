@@ -31,7 +31,7 @@ class BusinessFactory extends Factory
             'zip_code' => fake()->postcode(),
             'complement' => fake()->secondaryAddress(),
             'reference' => fake()->sentence(),
-            'banner_image' => fake()->imageUrl(),
+            'logo_image' => fake()->imageUrl(),
             'cover_image' => fake()->imageUrl(),
         ];
     }
