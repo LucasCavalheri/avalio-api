@@ -32,8 +32,8 @@ class UserResource extends JsonResource
         }
 
         $plans = [
-            config('services.stripe.pro_price_id') => 'PRO',
-            config('services.stripe.basic_price_id') => 'BASIC',
+            config('services.stripe.pro_price_id') => 'pro',
+            config('services.stripe.basic_price_id') => 'basic',
         ];
 
         return $plans[$subscription->stripe_price] ?? null;

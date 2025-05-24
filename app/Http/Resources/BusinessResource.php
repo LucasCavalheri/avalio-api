@@ -25,6 +25,7 @@ class BusinessResource extends JsonResource
             'logo_image' => $this->getLogoImageUrl(),
             'cover_image' => $this->getCoverImageUrl(),
             'reviews' => ReviewResource::collection($this->whenLoaded('reviews')),
+            // 'reviews' => ReviewResource::collection($this->whenLoaded('reviews')->where('status', 'approved')),
         ];
     }
 
