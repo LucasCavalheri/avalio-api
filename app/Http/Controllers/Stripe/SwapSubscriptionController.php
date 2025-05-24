@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Stripe;
 
 use App\Http\Controllers\Controller;
+use Dedoc\Scramble\Attributes\Group;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+#[Group('Stripe')]
 class SwapSubscriptionController extends Controller
 {
     public function __invoke(Request $request)
