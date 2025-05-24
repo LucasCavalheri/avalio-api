@@ -19,7 +19,7 @@ class GetBusinessController extends Controller
      */
     public function __invoke(Request $request, string $id)
     {
-        $business = Business::find($id);
+        $business = Business::with(['reviews'])->find($id);
 
         if (!$business) {
             return $this->error('Negócio não encontrado', Response::HTTP_NOT_FOUND);

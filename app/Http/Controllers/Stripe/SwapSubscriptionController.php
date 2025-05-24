@@ -24,9 +24,9 @@ class SwapSubscriptionController extends Controller
         $subscription = $user->subscription('default');
 
         // Verifica se existe uma assinatura cancelada em grace period
-        if (!$subscription || !$subscription->onGracePeriod()) {
+        if (!$subscription) {
             return $this->error(
-                'Não é possível alterar uma assinatura inexistente ou fora do período de carência',
+                'Não é possível alterar uma assinatura inexistente',
                 Response::HTTP_BAD_REQUEST
             );
         }

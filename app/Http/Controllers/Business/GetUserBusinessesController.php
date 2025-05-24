@@ -18,7 +18,7 @@ class GetUserBusinessesController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $businesses = Business::where('user_id', Auth::id())->get();
+        $businesses = Business::where('user_id', Auth::id())->with(['reviews'])->get();
 
         return $this->success('Negócios encontrados com sucesso', Response::HTTP_OK, BusinessResource::collection($businesses));
     }

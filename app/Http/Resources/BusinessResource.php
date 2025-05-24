@@ -20,8 +20,11 @@ class BusinessResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'phone' => $this->phone,
+            'email' => $this->email,
+            'active' => $this->active,
             'logo_image' => $this->getLogoImageUrl(),
             'cover_image' => $this->getCoverImageUrl(),
+            'reviews' => ReviewResource::collection($this->whenLoaded('reviews')),
         ];
     }
 

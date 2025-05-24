@@ -27,6 +27,7 @@ class UpdateBusinessRequest extends FormRequest
             'description' => 'sometimes|string|max:255',
             'phone' => 'sometimes|string|max:255',
             'email' => 'sometimes|email|max:255',
+            'active' => 'sometimes|boolean',
             'state' => 'sometimes|string|max:255',
             'city' => 'sometimes|string|max:255',
             'neighborhood' => 'sometimes|string|max:255',
