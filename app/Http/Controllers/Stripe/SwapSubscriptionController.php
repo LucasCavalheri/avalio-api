@@ -44,8 +44,12 @@ class SwapSubscriptionController extends Controller
             }
         }
 
-        $subscription->swap($priceId);
+        try {
+            $subscription->swap($priceId);
 
-        return $this->success('Assinatura alterada com sucesso!', Response::HTTP_OK);
+            return $this->success('Assinatura alterada com sucesso!', Response::HTTP_OK);
+        } catch (\Exception $e) {
+            return $this->error('Erro ao alterar a assinatura', Response::HTTP_INTERNAL_SERVER_ERROR, [$e->getMessage()]);
+        }
     }
 }
