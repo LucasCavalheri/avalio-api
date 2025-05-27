@@ -23,22 +23,33 @@ class SubscriptionHistoryController extends Controller
             // Obtém o histórico de faturas/pagamentos
             $invoices = $user->invoices();
 
+            // Para cada assinatura ativa, obtém a data da próxima cobrança
+            $subscriptions = $subscriptions->map(function ($subscription) {
+                if ($subscription->stripe_status === 'active' && !$subscription->canceled()) {
+                    $stripeSubscription = $subscription->asStripeSubscription();
+                    $subscription->next_payment = $stripeSubscription->current_period_end;
+                }
+                return $subscription;
+            });
+
             return response()->json([
                 'subscriptions' => SubscriptionHistoryResource::collection($subscriptions),
-                'invoices' => collect($invoices)->map(function ($invoice) {
+                'invoices' => $invoices->map(function ($invoice) {
                     return [
                         'id' => $invoice->id,
                         'total' => $invoice->total(),
                         'status' => $invoice->status,
-                        'date' => $invoice->date()->toIso8601String(),
-                        'url' => $invoice->asStripeInvoice()->hosted_invoice_url,
+                        'date' => $invoice->date()->toISOString(),
+                        'url' => $invoice->hosted_invoice_url,
                     ];
                 }),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Erro ao obter histórico',
-                'error' => $e->getMessage()
+                'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'errors' => [$e->getMessage()],
+                'data' => []
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }

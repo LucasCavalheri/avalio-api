@@ -26,6 +26,9 @@ class SubscriptionHistoryResource extends JsonResource
             'created_at' => $this->created_at,
             'ends_at' => $this->ends_at,
             'canceled_at' => $this->canceled_at,
+            'next_payment' => $this->when($this->next_payment, function () {
+                return date('d/m/Y', $this->next_payment);
+            }),
         ];
     }
 }
