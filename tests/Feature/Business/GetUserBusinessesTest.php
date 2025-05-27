@@ -2,8 +2,8 @@
 
 use App\Models\Business;
 use App\Models\User;
-use Illuminate\Http\Response;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Http\Response;
 use Mockery\MockInterface;
 use Tests\Feature\Traits\FakeStorage;
 

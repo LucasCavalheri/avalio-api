@@ -41,6 +41,6 @@ return [
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
         'basic_price_id' => env('STRIPE_BASIC_PRICE_ID'),
         'pro_price_id' => env('STRIPE_PRO_PRICE_ID'),
-    ]
+    ],
 
 ];

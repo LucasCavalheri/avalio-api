@@ -30,7 +30,7 @@ class RespondToReviewController extends Controller
 
         $review = Review::find($id);
 
-        if (!$review) {
+        if (! $review) {
             return $this->error('Review não encontrada', Response::HTTP_NOT_FOUND);
         }
 

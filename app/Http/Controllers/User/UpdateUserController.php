@@ -23,7 +23,7 @@ class UpdateUserController extends Controller
         $user = Auth::user();
 
         // verifica se a senha atual está correta
-        if (isset($data['current_password']) && !Hash::check($data['current_password'], $user->password)) {
+        if (isset($data['current_password']) && ! Hash::check($data['current_password'], $user->password)) {
             return $this->error('Senha atual incorreta', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 

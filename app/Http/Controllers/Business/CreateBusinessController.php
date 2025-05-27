@@ -30,7 +30,7 @@ class CreateBusinessController extends Controller
             return $this->error('Usuário atingiu o limite de negócios', Response::HTTP_UNAUTHORIZED);
         }
 
-        if ($totalBusinesses >= 3 && !$user->subscribedToPrice(config('services.stripe.basic_price_id'))) {
+        if ($totalBusinesses >= 3 && ! $user->subscribedToPrice(config('services.stripe.basic_price_id'))) {
             return $this->error('Usuário atingiu o limite de negócios', Response::HTTP_UNAUTHORIZED);
         }
 

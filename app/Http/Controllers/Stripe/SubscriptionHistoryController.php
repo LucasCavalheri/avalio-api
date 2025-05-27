@@ -7,7 +7,6 @@ use App\Http\Resources\SubscriptionHistoryResource;
 use Dedoc\Scramble\Attributes\Group;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Mockery\Matcher\Subset;
 
 #[Group('Stripe')]
 class SubscriptionHistoryController extends Controller
@@ -22,7 +21,7 @@ class SubscriptionHistoryController extends Controller
             $subscription = $user->subscription('default');
 
             // Adiciona a data da próxima cobrança se a assinatura estiver ativa
-            if ($subscription && $subscription->stripe_status === 'active' && !$subscription->canceled()) {
+            if ($subscription && $subscription->stripe_status === 'active' && ! $subscription->canceled()) {
                 $stripeSubscription = $subscription->asStripeSubscription();
                 $subscription->next_payment = $stripeSubscription->current_period_end;
             }
@@ -47,7 +46,7 @@ class SubscriptionHistoryController extends Controller
                 'message' => 'Erro ao obter histórico',
                 'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
                 'errors' => [$e->getMessage()],
-                'data' => []
+                'data' => [],
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }

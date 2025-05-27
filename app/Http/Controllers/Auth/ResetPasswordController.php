@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Dedoc\Scramble\Attributes\Group;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -28,13 +28,13 @@ class ResetPasswordController extends Controller
             ->where('expires_at', '>', now())
             ->first();
 
-        if (!$isTokenValid) {
+        if (! $isTokenValid) {
             return $this->error('Token inválido ou expirado', Response::HTTP_BAD_REQUEST);
         }
 
         $user = User::find($isTokenValid->user_id);
 
-        if (!$user) {
+        if (! $user) {
             return $this->error('Usuário não encontrado', Response::HTTP_NOT_FOUND);
         }
 

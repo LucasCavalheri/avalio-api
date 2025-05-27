@@ -21,7 +21,7 @@ class LoginController extends Controller
     {
         $data = $request->validated();
 
-        if (!Auth::attempt($data)) {
+        if (! Auth::attempt($data)) {
             return $this->error('Credenciais inválidas', Response::HTTP_UNAUTHORIZED);
         }
 
@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         return $this->success('Login realizado com sucesso', Response::HTTP_OK, [
             'user' => UserResource::make($user),
-            'token' => $token
+            'token' => $token,
         ]);
     }
 }

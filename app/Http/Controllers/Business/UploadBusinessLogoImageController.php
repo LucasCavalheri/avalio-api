@@ -25,7 +25,7 @@ class UploadBusinessLogoImageController extends Controller
 
         $business = Business::find($businessId);
 
-        if (!$business) {
+        if (! $business) {
             return $this->error('Negócio não encontrado', Response::HTTP_NOT_FOUND);
         }
 
@@ -35,14 +35,14 @@ class UploadBusinessLogoImageController extends Controller
 
         if ($request->hasFile('logo_image')) {
             $file = $request->file('logo_image');
-            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $filePath = 'businesses/' . $business->id . '/logo-images/' . $fileName;
+            $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+            $filePath = 'businesses/'.$business->id.'/logo-images/'.$fileName;
 
             $disk = config('app.env') === 'local' ? 'public' : 's3';
 
             $uploaded = Storage::disk($disk)->put($filePath, file_get_contents($file), 'public');
 
-            if (!$uploaded) {
+            if (! $uploaded) {
                 return $this->error('Falha no upload da imagem', Response::HTTP_INTERNAL_SERVER_ERROR);
             }
 

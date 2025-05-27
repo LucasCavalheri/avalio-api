@@ -21,7 +21,7 @@ class GetBusinessController extends Controller
     {
         $business = Business::with(['reviews'])->find($id);
 
-        if (!$business) {
+        if (! $business) {
             return $this->error('Negócio não encontrado', Response::HTTP_NOT_FOUND);
         }
 

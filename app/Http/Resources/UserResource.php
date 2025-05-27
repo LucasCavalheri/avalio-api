@@ -23,11 +23,11 @@ class UserResource extends JsonResource
         ];
     }
 
-    private function getPlanName(): string|null
+    private function getPlanName(): ?string
     {
         $subscription = $this->subscriptions()->where('stripe_status', 'active')->first();
 
-        if (!$subscription) {
+        if (! $subscription) {
             return null;
         }
 

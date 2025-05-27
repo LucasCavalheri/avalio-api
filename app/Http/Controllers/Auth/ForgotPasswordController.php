@@ -24,7 +24,7 @@ class ForgotPasswordController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
+        if (! $user) {
             return $this->error('Usuário não encontrado', Response::HTTP_NOT_FOUND);
         }
 

@@ -16,7 +16,7 @@ class StripeCheckoutController extends Controller
     public function __invoke(Request $request)
     {
         $data = $request->validate([
-            'price' => 'required|string|in:basic,pro'
+            'price' => 'required|string|in:basic,pro',
         ]);
 
         /** @var \App\Models\User */
@@ -32,9 +32,9 @@ class StripeCheckoutController extends Controller
         };
 
         try {
-            $session =  $user->newSubscription('default', $priceId)->checkout([
-                'success_url' => config('app.frontend_url') . '/success',
-                'cancel_url' => config('app.frontend_url') . '/cancel',
+            $session = $user->newSubscription('default', $priceId)->checkout([
+                'success_url' => config('app.frontend_url').'/success',
+                'cancel_url' => config('app.frontend_url').'/cancel',
             ]);
 
             return $this->success('Checkout realizado com sucesso', Response::HTTP_OK, [

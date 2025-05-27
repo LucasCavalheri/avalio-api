@@ -25,7 +25,7 @@ class EnsureUserHasActiveSubscription
         /** @var \App\Models\User */
         $user = $request->user();
 
-        if (!$user->subscribed() && !$user->onTrial()) {
+        if (! $user->subscribed() && ! $user->onTrial()) {
             return $this->error('Usuário não possui uma assinatura ativa', Response::HTTP_UNAUTHORIZED);
         }
 

@@ -21,7 +21,7 @@ describe('RegisterController', function () {
                 'name',
                 'email',
                 'phone',
-            ]
+            ],
         ]);
 
         $this->assertDatabaseHas('users', [
@@ -43,8 +43,8 @@ describe('RegisterController', function () {
         $response->assertJsonStructure([
             'message',
             'errors' => [
-                'email'
-            ]
+                'email',
+            ],
         ]);
     });
 
@@ -60,8 +60,8 @@ describe('RegisterController', function () {
         $response->assertJsonStructure([
             'message',
             'errors' => [
-                'phone'
-            ]
+                'phone',
+            ],
         ]);
     });
 
@@ -77,8 +77,8 @@ describe('RegisterController', function () {
         $response->assertJsonStructure([
             'message',
             'errors' => [
-                'password'
-            ]
+                'password',
+            ],
         ]);
     });
 });

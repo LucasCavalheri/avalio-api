@@ -22,8 +22,8 @@ describe('LoginController', function () {
             'status',
             'data' => [
                 'token',
-                'user'
-            ]
+                'user',
+            ],
         ]);
 
         $this->assertAuthenticatedAs($user);
