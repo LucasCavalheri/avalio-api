@@ -7,6 +7,7 @@ use App\Http\Resources\SubscriptionHistoryResource;
 use Dedoc\Scramble\Attributes\Group;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Mockery\Matcher\Subset;
 
 #[Group('Stripe')]
 class SubscriptionHistoryController extends Controller
@@ -17,23 +18,20 @@ class SubscriptionHistoryController extends Controller
         $user = $request->user();
 
         try {
-            // Obtém todas as assinaturas (ativas, canceladas, etc)
-            $subscriptions = $user->subscriptions()->latest()->get();
+            // Obtém a assinatura atual
+            $subscription = $user->subscription('default');
+
+            // Adiciona a data da próxima cobrança se a assinatura estiver ativa
+            if ($subscription && $subscription->stripe_status === 'active' && !$subscription->canceled()) {
+                $stripeSubscription = $subscription->asStripeSubscription();
+                $subscription->next_payment = $stripeSubscription->current_period_end;
+            }
 
             // Obtém o histórico de faturas/pagamentos
             $invoices = $user->invoices();
 
-            // Para cada assinatura ativa, obtém a data da próxima cobrança
-            $subscriptions = $subscriptions->map(function ($subscription) {
-                if ($subscription->stripe_status === 'active' && !$subscription->canceled()) {
-                    $stripeSubscription = $subscription->asStripeSubscription();
-                    $subscription->next_payment = $stripeSubscription->current_period_end;
-                }
-                return $subscription;
-            });
-
             return response()->json([
-                'subscriptions' => SubscriptionHistoryResource::collection($subscriptions),
+                'subscription' => $subscription ? SubscriptionHistoryResource::make($subscription) : null,
                 'invoices' => $invoices->map(function ($invoice) {
                     return [
                         'id' => $invoice->id,
