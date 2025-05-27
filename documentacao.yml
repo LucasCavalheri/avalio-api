@@ -1,0 +1,762 @@
+type: collection.insomnia.rest/5.0
+name: Avalio API
+meta:
+  id: wrk_8a74bbe9a0464decb7c16242463d82fb
+  created: 1747413386752
+  modified: 1748362989291
+collection:
+  - name: Auth
+    meta:
+      id: fld_53a53777a01449a2a0779124fd15d7b0
+      created: 1747413392030
+      modified: 1747413392030
+      sortKey: -1747413392030
+    children:
+      - url: "{{ _.URL }}/auth/register"
+        name: Register
+        meta:
+          id: req_cb3c2341196d40eea50b9d140951ed1a
+          created: 1747413393969
+          modified: 1747945345706
+          isPrivate: false
+          sortKey: -1747413393969
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Lucas",
+            	"email": "lucas@email.com",
+            	"phone": "19999031230",
+            	"password": "123123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/auth/login"
+        name: Login
+        meta:
+          id: req_3383c61e91034c63bfd470efca6c5e8f
+          created: 1747415255304
+          modified: 1747946701672
+          isPrivate: false
+          sortKey: -1747366260012
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "lucas@email.com",
+            	"password": "123123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/auth/logout"
+        name: Logout
+        meta:
+          id: req_bf866ece8c994b2e89deb930837213b8
+          created: 1748027240539
+          modified: 1748027738046
+          isPrivate: false
+          sortKey: -1747342693033.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "lucas@email.com",
+            	"password": "123123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_a5e9bda62d5c4164a4d663068f2f2232
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_d5ee92cc2a714fd9880a805d661c7c94
+          - id: pair_48014d8b98f04adfb520797a5da74630
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Stripe
+    meta:
+      id: fld_e2c80bca48c94ed5aa80ca645fedd02c
+      created: 1748027258922
+      modified: 1748047521835
+      sortKey: -1748027258922
+    children:
+      - url: "{{ _.URL }}/stripe/checkout"
+        name: Checkout
+        meta:
+          id: req_557767149f5448e4ba2f1540a5e4b5a5
+          created: 1748027264630
+          modified: 1748028499535
+          isPrivate: false
+          sortKey: -1748027274385
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"price": "basic"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_e6e9227f931042ecb8aca0712b6baec2
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_fb52947cca494efa9a53f328649e562d
+          - id: pair_47b3b27da8b144d982bd93033028947d
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/stripe/swap-subscription"
+        name: Swap Subscription
+        meta:
+          id: req_e2458e2db0bb4763aacc6fbc684e14a8
+          created: 1748047363155
+          modified: 1748051909857
+          isPrivate: false
+          sortKey: -1747720334177
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"price": "basic"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_e6e9227f931042ecb8aca0712b6baec2
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_fb52947cca494efa9a53f328649e562d
+          - id: pair_47b3b27da8b144d982bd93033028947d
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/stripe/cancel-subscription"
+        name: Delete Subscription
+        meta:
+          id: req_f0b3877cd9a44ae9b6231252e39733ef
+          created: 1748049904535
+          modified: 1748049928735
+          isPrivate: false
+          sortKey: -1747566864073
+        method: POST
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_e6e9227f931042ecb8aca0712b6baec2
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_fb52947cca494efa9a53f328649e562d
+          - id: pair_47b3b27da8b144d982bd93033028947d
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Business
+    meta:
+      id: fld_ed72bc54cdfd4efcbbb936a7cd91f984
+      created: 1748027302494
+      modified: 1748047357946
+      sortKey: -1748027302494
+    children:
+      - url: "{{ _.URL }}/businesses"
+        name: Create Business
+        meta:
+          id: req_dc407fa497d941a1bf54d0bb1f7b4c04
+          created: 1748027307562
+          modified: 1748047778711
+          isPrivate: false
+          sortKey: -1748027309625
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Cafeteria Expresso",
+            	"description": "O melhor lugar para tomar um café",
+            	"phone": "+5519999031230",
+            	"email": "cafeteria@expresso.com",
+            	"state": "SP",
+            	"city": "Mogi Mirim",
+            	"neighborhood": "Parque do Estado II",
+            	"street": "Antonieta Picolomini Peres",
+            	"number": "45",
+            	"zip_code": "13807690"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/businesses/user"
+        name: Get User Businesses
+        meta:
+          id: req_aab29fdfb623454e9dbd060696cce6d6
+          created: 1748029359416
+          modified: 1748047730938
+          isPrivate: false
+          sortKey: -1748027292005
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/businesses/1"
+        name: Get Business
+        meta:
+          id: req_493db4fed0b3415cb6a3244b3eb344d7
+          created: 1748029383967
+          modified: 1748051034881
+          isPrivate: false
+          sortKey: -1748027283195
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/businesses/5"
+        name: Update Business
+        meta:
+          id: req_523fa43390e9424eaf6ffccc58407a37
+          created: 1748029403776
+          modified: 1748047683074
+          isPrivate: false
+          sortKey: -1748027278790
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"active": false
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/businesses/1"
+        name: Delete Business
+        meta:
+          id: req_08b752fac53849d1aa70f87f41852409
+          created: 1748029426089
+          modified: 1748029428119
+          isPrivate: false
+          sortKey: -1748027276587.5
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"description": "O melhor lugar para tomar um café expresso!"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/businesses/2/logo-image"
+        name: Upload Business Logo Image
+        meta:
+          id: req_26f177ed8e3341d8b22f229db73250ad
+          created: 1748029471365
+          modified: 1748029499275
+          isPrivate: false
+          sortKey: -1748027300815
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - id: pair_c8628a2ffb03459aa45569c838d68c90
+              name: logo_image
+              disabled: false
+              type: file
+              fileName: C:\Users\Cavalheri\Pictures\Screenshots\Captura de tela 2025-05-19
+                154729.png
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/businesses/2/cover-image"
+        name: Upload Business Cover Image
+        meta:
+          id: req_d8d434567b3f4acf8859b3fb982eabec
+          created: 1748029515724
+          modified: 1748029525691
+          isPrivate: false
+          sortKey: -1748027296410
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - id: pair_c8628a2ffb03459aa45569c838d68c90
+              name: cover_image
+              disabled: false
+              type: file
+              fileName: C:\Users\Cavalheri\Pictures\Screenshots\Captura de tela 2025-05-21
+                124115.png
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: User
+    meta:
+      id: fld_9ca82e9cc9bb42228abdea22e7bf8b8b
+      created: 1748047526765
+      modified: 1748047526765
+      sortKey: -1748047526765
+    children:
+      - url: "{{ _.URL }}/users/profile"
+        name: Profile
+        meta:
+          id: req_15386fc971954ed88649d6574bedc828
+          created: 1748047533390
+          modified: 1748049287566
+          isPrivate: false
+          sortKey: -1748047535442
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/users"
+        name: Update User
+        meta:
+          id: req_466f0b97faa746a69639bd9f459f96b5
+          created: 1748048570584
+          modified: 1748048637581
+          isPrivate: false
+          sortKey: -1748037422533.5
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Nome atualizado!",
+            	"password": "nova-senha",
+            	"password_confirmation": "nova-senha",
+            	"current_password": "123123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/users"
+        name: Delete Account
+        meta:
+          id: req_54bedc15636a43309a4bb849a98fe5e5
+          created: 1748048800659
+          modified: 1748048803824
+          isPrivate: false
+          sortKey: -1748032366079.25
+        method: DELETE
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Review
+    meta:
+      id: fld_fe47c63ae639460c904b274f987cc8e2
+      created: 1748050964431
+      modified: 1748050964431
+      sortKey: -1748050964431
+    children:
+      - url: "{{ _.URL }}/reviews"
+        name: Create Review
+        meta:
+          id: req_1315aa069afc40a586254b556b7f2f93
+          created: 1748050969394
+          modified: 1748051130668
+          isPrivate: false
+          sortKey: -1748050973858
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"business_id": 1,
+            	"rating": 3,
+            	"comment": "Cafeteria é mais ou menos..."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/reviews/2/respond"
+        name: Respond to Review
+        meta:
+          id: req_70141d1cd61a4041878fa7c0a97ec9ae
+          created: 1748051250171
+          modified: 1748051941749
+          isPrivate: false
+          sortKey: -1748049254650
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"response": "Obrigado pelas 3 estrelas!"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_446eaa44d96ccd389f9ca82ff9ac910dcd72be81
+    created: 1747413386757
+    modified: 1748050917656
+  cookies:
+    - key: XSRF-TOKEN
+      value: eyJpdiI6IlBYdXdGUUI0TDJxTzEwTVZFUHlZVXc9PSIsInZhbHVlIjoiS1pxeTNDSlg3c3M4bks2dlI5a1pNdjdKdCtGaU5xNDZaTDViN2l5TytlWUhyQjRRRDJ3b01Pb3lBNjR5d2JweHpYZ0tubzZDV001cUhSVDlWaGdXQzNSblF1WVdDam1lRE80c1lzclZvRkNSUm1FN2pmZzRtVlllZXNCNVpVNmIiLCJtYWMiOiI4MDI3ZDdkZmU0NjIyMzdhZjAyMDg3ZTc5YTJiNzQyMjhkMDI2ODNkM2FlMTRjNDI2N2NlYmUyMWVhMzM5OWE1IiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: localhost
+      path: /
+      hostOnly: true
+      creation: 2025-05-24T01:41:57.654Z
+      lastAccessed: 2025-05-24T01:41:57.654Z
+      sameSite: lax
+      id: bc057776-88f8-4a25-91bd-89632fb45c21
+    - key: laravel_session
+      value: eyJpdiI6Ikx0bG9NWWw3ck5BS3JndXVRUDI2c1E9PSIsInZhbHVlIjoiQ2pVZUE5RlprSXF1MXhlbVp2UXd6ZDZZSFMzdDJGbXNSRzYzQVdIYmpyMDd5MXpsRXNsQ2tULzZLQzZ2N1hoeUJBSU5uV3dRRnhRNi9CcFYyTVN5N2Z1cEtXbGY0S0Z6anlTMnE5emNQVDh4SVdHMzhPck1NT3FuZHVlQzJZZkQiLCJtYWMiOiJmYTBlOGY4YmQ5OGJkZDE3MDdkOTIzMWJmNzM3MGQxYmU2MWQ3NTBkM2JlZWUwOWRjZjM3MTExZWEzMzdkNTkxIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-24T01:41:57.656Z
+      lastAccessed: 2025-05-24T01:41:57.656Z
+      sameSite: lax
+      id: 35f28773-f5fb-4ca0-9974-275016425681
+environments:
+  name: Base Environment
+  meta:
+    id: env_446eaa44d96ccd389f9ca82ff9ac910dcd72be81
+    created: 1747413386755
+    modified: 1747945086663
+    isPrivate: false
+  data:
+    URL: http://localhost:3000/api
+  subEnvironments:
+    - name: PROD
+      meta:
+        id: env_a2daed78e40045b59feae7422ef77faa
+        created: 1747945112399
+        modified: 1747946714883
+        isPrivate: false
+        sortKey: 1747945112399
+      data:
+        URL: https://api-development-1qniuu.laravel.cloud//api
+    - name: DEV
+      meta:
+        id: env_9401e7a70b794d10b0da7406ebd7b57b
+        created: 1747945135650
+        modified: 1748027727907
+        isPrivate: false
+        sortKey: 1747945135651
+      data:
+        URL: http://localhost:8000/api
+        TOKEN: "{% response 'body', 'req_3383c61e91034c63bfd470efca6c5e8f',
+          'b64::JC5kYXRhLnRva2Vu::46b', 'never', 60 %}"
+    - name: LOCAL
+      meta:
+        id: env_ed6af4915efd4af0b124308edfe1190b
+        created: 1748027203467
+        modified: 1748027729220
+        isPrivate: false
+        sortKey: 1748027203467
+      data:
+        URL: http://localhost:8000/api
+        TOKEN: "{% response 'body', 'req_3383c61e91034c63bfd470efca6c5e8f',
+          'b64::JC5kYXRhLnRva2Vu::46b', 'never', 60 %}"
