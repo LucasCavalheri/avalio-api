@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Review;
 
+use App\Events\ReviewCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\CreateReviewRequest;
 use App\Http\Resources\ReviewResource;
@@ -22,7 +23,11 @@ class CreateReviewController extends Controller
     {
         $data = $request->validated();
 
-        $business = Business::with('user')->findOrFail($data['business_id']);
+        $business = Business::with('user')->find($data['business_id']);
+
+        if (!$business) {
+            return $this->error('Negócio não encontrado', Response::HTTP_NOT_FOUND);
+        }
 
         $subscription = $business->user->subscription('default');
 
@@ -34,6 +39,10 @@ class CreateReviewController extends Controller
             ...$data,
             'status' => $status,
         ]);
+
+        $review->load(['business.user']);
+
+        ReviewCreated::dispatch($review);
 
         return $this->success('Review criada com sucesso', Response::HTTP_CREATED, ReviewResource::make($review));
     }

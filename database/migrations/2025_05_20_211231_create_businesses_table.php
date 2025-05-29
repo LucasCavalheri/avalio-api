@@ -16,9 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('color')->default('#000000');
             $table->boolean('active')->default(true);
             $table->string('phone');
             $table->string('email');
+            $table->string('website')->nullable();
             $table->string('logo_image')->nullable();
             $table->string('cover_image')->nullable();
             $table->string('state');
