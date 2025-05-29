@@ -42,7 +42,9 @@ class CreateReviewController extends Controller
 
         $review->load(['business.user']);
 
-        ReviewCreated::dispatch($review);
+        if (!$isBasic) {
+            ReviewCreated::dispatch($review);
+        }
 
         return $this->success('Review criada com sucesso', Response::HTTP_CREATED, ReviewResource::make($review));
     }

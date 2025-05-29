@@ -7,7 +7,7 @@ use App\Http\Controllers\Notification\MarkNotificationAsReadController;
 use App\Http\Controllers\Notification\MarkNotificationAsUnreadController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum', 'is.subscribed'])->group(function () {
     Route::prefix('notifications')->name('notifications.')->group(function () {
         Route::get('/', ListNotificationsController::class)->name('index');
         Route::post('/{notificationId}/mark-as-read', MarkNotificationAsReadController::class)->name('mark-as-read');
