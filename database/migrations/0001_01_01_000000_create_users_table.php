@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->default(false);
+            $table->boolean('terms_of_use')->default(false);
+            $table->timestamp('terms_of_use_acceptance_date')->default(now());
             $table->rememberToken();
             $table->timestamps();
         });
