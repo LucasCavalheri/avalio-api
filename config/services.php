@@ -43,4 +43,9 @@ return [
         'pro_price_id' => env('STRIPE_PRO_PRICE_ID'),
     ],
 
+    'twilio' => [
+        'sid' => env('TWILIO_SID'),
+        'auth_token' => env('TWILIO_AUTH_TOKEN'),
+        'whatsapp_from' => env('TWILIO_WHATSAPP_FROM'),
+    ],
 ];

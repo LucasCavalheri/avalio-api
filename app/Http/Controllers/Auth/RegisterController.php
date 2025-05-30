@@ -20,6 +20,8 @@ class RegisterController extends Controller
     public function __invoke(RegisterRequest $request)
     {
         $data = $request->validated();
+        $data['phone'] = preg_replace('/[^0-9]/', '', $data['phone']);
+        $data['phone'] = '+55' . $data['phone'];
 
         $user = User::create($data);
 
