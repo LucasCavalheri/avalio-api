@@ -18,13 +18,18 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->default(false);
+            $table->boolean('terms_of_use')->default(false);
+            $table->timestamp('terms_of_use_acceptance_date')->default(now());
             $table->rememberToken();
             $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
+            $table->id();
+            $table->integer('user_id');
+            $table->tinyInteger('token');
+            $table->string('expires_at');
             $table->timestamp('created_at')->nullable();
         });
 

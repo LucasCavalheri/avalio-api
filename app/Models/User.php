@@ -13,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, HasApiTokens, Notifiable, Billable;
+    use Billable, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +25,9 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'is_admin',
+        'terms_of_use',
+        'terms_of_use_acceptance_date',
     ];
 
     /**
@@ -53,5 +56,10 @@ class User extends Authenticatable
     public function businesses(): HasMany
     {
         return $this->hasMany(Business::class);
+    }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
     }
 }

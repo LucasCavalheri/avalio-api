@@ -13,11 +13,13 @@ class Business extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'name',
         'description',
+        'active',
         'phone',
         'email',
-        'banner_image',
+        'logo_image',
         'cover_image',
         'state',
         'city',

@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('color')->default('oklch(76.9% 0.188 70.08)');
+            $table->boolean('active')->default(true);
             $table->string('phone');
             $table->string('email');
-            $table->string('banner_image');
-            $table->string('cover_image');
+            $table->string('website')->nullable();
+            $table->string('logo_image')->nullable();
+            $table->string('cover_image')->nullable();
             $table->string('state');
             $table->string('city');
             $table->string('neighborhood');
