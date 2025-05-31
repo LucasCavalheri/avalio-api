@@ -7,6 +7,7 @@ use App\Http\Controllers\Business\GetUserBusinessesController;
 use App\Http\Controllers\Business\UpdateBusinessController;
 use App\Http\Controllers\Business\UploadBusinessCoverImageController;
 use App\Http\Controllers\Business\UploadBusinessLogoImageController;
+use App\Http\Controllers\Business\BusinessStatsController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('businesses')->name('businesses.')->group(function () {

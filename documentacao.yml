@@ -17,7 +17,7 @@ collection:
         meta:
           id: req_cb3c2341196d40eea50b9d140951ed1a
           created: 1747413393969
-          modified: 1747945345706
+          modified: 1748635593957
           isPrivate: false
           sortKey: -1747413393969
         method: POST
@@ -27,14 +27,21 @@ collection:
             {
             	"name": "Lucas",
             	"email": "lucas@email.com",
-            	"phone": "19999031230",
+            	"phone": "(19) 9 9903-1230",
+            	"terms_of_use": true,
             	"password": "123123"
             }
         headers:
           - name: Content-Type
             value: application/json
+            id: pair_9b9e664e62004a7ba6e1578989a790fa
           - name: User-Agent
             value: insomnia/11.0.2
+            id: pair_0e17244683d74b9f8ad324006ef2e2ee
+          - id: pair_dc67d104a212460a9536cc679b433e18
+            name: Accept
+            value: application/json
+            disabled: false
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -48,7 +55,7 @@ collection:
         meta:
           id: req_3383c61e91034c63bfd470efca6c5e8f
           created: 1747415255304
-          modified: 1747946701672
+          modified: 1748442167448
           isPrivate: false
           sortKey: -1747366260012
         method: POST
@@ -62,8 +69,14 @@ collection:
         headers:
           - name: Content-Type
             value: application/json
+            id: pair_bb3899ef343a4197a79d23a8565d3525
           - name: User-Agent
             value: insomnia/11.0.2
+            id: pair_cad9c6e65543404a8e84235631716d6c
+          - id: pair_a78e0264d177474399a417baa617d7d4
+            name: Accept
+            value: application/json
+            disabled: false
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -122,7 +135,7 @@ collection:
         meta:
           id: req_557767149f5448e4ba2f1540a5e4b5a5
           created: 1748027264630
-          modified: 1748028499535
+          modified: 1748633731255
           isPrivate: false
           sortKey: -1748027274385
         method: POST
@@ -130,7 +143,7 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"price": "basic"
+            	"price": "pro"
             }
         headers:
           - name: Content-Type
@@ -159,7 +172,7 @@ collection:
         meta:
           id: req_e2458e2db0bb4763aacc6fbc684e14a8
           created: 1748047363155
-          modified: 1748051909857
+          modified: 1748479686690
           isPrivate: false
           sortKey: -1747720334177
         method: POST
@@ -167,7 +180,7 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"price": "basic"
+            	"price": "pro"
             }
         headers:
           - name: Content-Type
@@ -200,6 +213,39 @@ collection:
           isPrivate: false
           sortKey: -1747566864073
         method: POST
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_e6e9227f931042ecb8aca0712b6baec2
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_fb52947cca494efa9a53f328649e562d
+          - id: pair_47b3b27da8b144d982bd93033028947d
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/stripe/subscription-history"
+        name: Subscription History
+        meta:
+          id: req_2c7f677ac07c48269c2f9c87a7dc58e2
+          created: 1748387691487
+          modified: 1748387698668
+          isPrivate: false
+          sortKey: -1747490129021
+        method: GET
         body:
           mimeType: application/json
         headers:
@@ -433,7 +479,8 @@ collection:
               name: logo_image
               disabled: false
               type: file
-              fileName: C:\Users\Cavalheri\Pictures\Screenshots\Captura de tela 2025-05-19
+              fileName:
+                C:\Users\Cavalheri\Pictures\Screenshots\Captura de tela 2025-05-19
                 154729.png
         headers:
           - name: Content-Type
@@ -472,7 +519,8 @@ collection:
               name: cover_image
               disabled: false
               type: file
-              fileName: C:\Users\Cavalheri\Pictures\Screenshots\Captura de tela 2025-05-21
+              fileName:
+                C:\Users\Cavalheri\Pictures\Screenshots\Captura de tela 2025-05-21
                 124115.png
         headers:
           - name: Content-Type
@@ -620,7 +668,7 @@ collection:
         meta:
           id: req_1315aa069afc40a586254b556b7f2f93
           created: 1748050969394
-          modified: 1748051130668
+          modified: 1748633750446
           isPrivate: false
           sortKey: -1748050973858
         method: POST
@@ -691,12 +739,184 @@ collection:
             send: true
             store: true
           rebuildPath: true
+  - name: Notification
+    meta:
+      id: fld_588425e25f5e4fe2b25940a96e037293
+      created: 1748478679124
+      modified: 1748478679124
+      sortKey: -1748478679124
+    children:
+      - url: "{{ _.URL }}/notifications"
+        name: List All Notifications
+        meta:
+          id: req_f34a28a798ef4d19b461294e0dee73bd
+          created: 1748478674823
+          modified: 1748478759779
+          isPrivate: false
+          sortKey: -1748420858488.5
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/notifications/1/mark-as-read"
+        name: Mark Notification As Read
+        meta:
+          id: req_326a569bb4274cd48131860cbbfe9351
+          created: 1748478728313
+          modified: 1748478772063
+          isPrivate: false
+          sortKey: -1748420858588.5
+        method: POST
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/notifications/1/mark-as-unread"
+        name: Mark Notification As Unread
+        meta:
+          id: req_7bd51b8c06644487aa150f3e30ade0bd
+          created: 1748478791383
+          modified: 1748478795565
+          isPrivate: false
+          sortKey: -1748420858538.5
+        method: POST
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/notifications/mark-all-as-read"
+        name: Mark All Notifications As Read
+        meta:
+          id: req_d598ac70ceb341d797bbc3cdeae6b5a9
+          created: 1748478811492
+          modified: 1748478817911
+          isPrivate: false
+          sortKey: -1748420858513.5
+        method: POST
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/notifications/1"
+        name: Delete Notification
+        meta:
+          id: req_f01f69561eab45edb9756d8b8d7fff3a
+          created: 1748478838059
+          modified: 1748478853367
+          isPrivate: false
+          sortKey: -1748420858388.5
+        method: DELETE
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8376b6451e5749789b5dc91bc3f7a248
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_5f5eb12b73f04fa4a3dc2c751ddad03d
+          - id: pair_5dad7e3a1c2d4439be40cbb2a35b5f0f
+            name: Accept
+            value: application/json
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_446eaa44d96ccd389f9ca82ff9ac910dcd72be81
     created: 1747413386757
-    modified: 1748050917656
+    modified: 1748442141514
   cookies:
     - key: XSRF-TOKEN
       value: eyJpdiI6IlBYdXdGUUI0TDJxTzEwTVZFUHlZVXc9PSIsInZhbHVlIjoiS1pxeTNDSlg3c3M4bks2dlI5a1pNdjdKdCtGaU5xNDZaTDViN2l5TytlWUhyQjRRRDJ3b01Pb3lBNjR5d2JweHpYZ0tubzZDV001cUhSVDlWaGdXQzNSblF1WVdDam1lRE80c1lzclZvRkNSUm1FN2pmZzRtVlllZXNCNVpVNmIiLCJtYWMiOiI4MDI3ZDdkZmU0NjIyMzdhZjAyMDg3ZTc5YTJiNzQyMjhkMDI2ODNkM2FlMTRjNDI2N2NlYmUyMWVhMzM5OWE1IiwidGFnIjoiIn0%3D
@@ -707,7 +927,7 @@ cookieJar:
       creation: 2025-05-24T01:41:57.654Z
       lastAccessed: 2025-05-24T01:41:57.654Z
       sameSite: lax
-      id: bc057776-88f8-4a25-91bd-89632fb45c21
+      id: 5b664fd8-0881-4f19-a7da-cb2156cf0ded
     - key: laravel_session
       value: eyJpdiI6Ikx0bG9NWWw3ck5BS3JndXVRUDI2c1E9PSIsInZhbHVlIjoiQ2pVZUE5RlprSXF1MXhlbVp2UXd6ZDZZSFMzdDJGbXNSRzYzQVdIYmpyMDd5MXpsRXNsQ2tULzZLQzZ2N1hoeUJBSU5uV3dRRnhRNi9CcFYyTVN5N2Z1cEtXbGY0S0Z6anlTMnE5emNQVDh4SVdHMzhPck1NT3FuZHVlQzJZZkQiLCJtYWMiOiJmYTBlOGY4YmQ5OGJkZDE3MDdkOTIzMWJmNzM3MGQxYmU2MWQ3NTBkM2JlZWUwOWRjZjM3MTExZWEzMzdkNTkxIiwidGFnIjoiIn0%3D
       maxAge: 7200
@@ -718,7 +938,42 @@ cookieJar:
       creation: 2025-05-24T01:41:57.656Z
       lastAccessed: 2025-05-24T01:41:57.656Z
       sameSite: lax
-      id: 35f28773-f5fb-4ca0-9974-275016425681
+      id: eb954e36-1931-41e5-a59a-03a06bfbefcd
+    - key: XSRF-TOKEN
+      value: eyJpdiI6ImNlWlBIcE9SRHduNVRjR0h3bXc5RGc9PSIsInZhbHVlIjoiVkhkM08wUkV4Nk14VytKSGVBZndRKzNlUElVZkx2b3p0ZUhGZDhQR3RwNVNvTHBCa2ZTQS9kaTR6c2dLUldoZ1FEN2RWd0RXdnhTTDZaK1UyU1cxbWsvYUV6NTRSTGgyTlhlYk5pclRST29RTGZJcGIzdUF6amFIWVRtU2x5aEoiLCJtYWMiOiI2YWY4ZDYwOWE5MGNlZjg1ZWYwZDA5ZDEzYzNlNWJhNGM2M2JlMzllNjljNmJjOTgwNGFiYWExNmExMzEzZDJjIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: avalio-api-development-uf3gsj.laravel.cloud
+      path: /
+      secure: true
+      hostOnly: true
+      creation: 2025-05-28T14:22:21.512Z
+      lastAccessed: 2025-05-28T14:22:21.512Z
+      sameSite: lax
+      id: bea71184-3b00-43f4-a1bc-5b849d418690
+    - key: avalio_api_session
+      value: eyJpdiI6ImZhMW11TkNvdmYyaXZyMnd4c1lFRWc9PSIsInZhbHVlIjoia1lZY1hzUVhVSlIwOFpMYktzQmEzbTBIVlduR25Nd0JYdldqaXJHTzB6K1YyZVBnbEpaSnFuUlhvV3BBRk53Qi9ZRnBZaEJSalM3RmlRM3ZJOUFONkFadTcwRzhTV2UxSENQUHNOVGtIVnBQQ091QzVZYXpmRGNUejJkZ1NKTnoiLCJtYWMiOiI1ZTc4MGQ1ODljZjAwODllY2Q3YTQzNjc5NjJjYThlN2EyZmM1Zjg0NGZlZDA2MmNlY2I1OTJhZjgxNDY5NTYzIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: avalio-api-development-uf3gsj.laravel.cloud
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-28T14:22:21.513Z
+      lastAccessed: 2025-05-28T14:22:21.513Z
+      sameSite: lax
+      id: 1aadecf1-298b-49b3-b272-a519e53e959f
+    - key: UBFZjkQsUgbU8xiPEeQ5uc7IXds0R8Ws8H8146Sn
+      value: eyJpdiI6Ijh5N29DZUI5bVQrNnl3cTFJMzJ2dmc9PSIsInZhbHVlIjoibEowMjhybHo4bkU2akRVNFQ5Y1MyckllUGhHNXZuWnJrMG5WZ3dScWlBWDlyK0VBbXBaUUpVRlVhRkw0KzVyU1B1NmNZSVcweTlteVdhTGE1dFZpUmlvWDdsaXRkVkwzUnpBWkwvNXJJc254RTBNZ3FhWkF3Y09JS0FGSXZMa2M1eHdRaGo4akxSb3RhaVZDS2g5akFldVI4RWFpUER1bHc2b05waFNzOG9PQ0hQOUNUcHBGMkdLTEkyYkI2MlpzTXhzdGVGaXpDYXpSY05kSTRyQ2hhdElJQ1RnckZBcHIvQnU3SG9UeVo5UU5MQS9rYmgvaHM5UjFNZ2UzcGtOYnVUNGpGRTNYVHRnRVVwTWxKNXVjLzNWRkNPL3VwTVY0bHlyQUtPS2RuaUNqbEJJaE1IdU1LS2FTaEVrK1ZlSTF1L3ZqNUthSWlXZTQxblZTMkFZYzFFSUJNa3QzNFhhcmxZc0Z0UktzR1ZadEp2aHlSeXRKUmtGamRUeDQvVDdmY0FnS0cvdXR5dDdtaXQ4WmhLSll5QT09IiwibWFjIjoiNzExN2EyNmY2N2ZiMDZjZDQyMDJmOTI0MGU2YzdiNGE5ZTA1NWY1Y2Y1MjMzOGJiYzYzM2ZjNDJiOGIyZmEzZSIsInRhZyI6IiJ9
+      maxAge: 7200
+      domain: avalio-api-development-uf3gsj.laravel.cloud
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-28T14:22:21.513Z
+      lastAccessed: 2025-05-28T14:22:21.513Z
+      sameSite: lax
+      id: 75bcdb30-9f10-4603-822a-199e9d093ea4
 environments:
   name: Base Environment
   meta:
@@ -742,11 +997,11 @@ environments:
       meta:
         id: env_9401e7a70b794d10b0da7406ebd7b57b
         created: 1747945135650
-        modified: 1748027727907
+        modified: 1748442126644
         isPrivate: false
         sortKey: 1747945135651
       data:
-        URL: http://localhost:8000/api
+        URL: https://avalio-api-development-uf3gsj.laravel.cloud/api
         TOKEN: "{% response 'body', 'req_3383c61e91034c63bfd470efca6c5e8f',
           'b64::JC5kYXRhLnRva2Vu::46b', 'never', 60 %}"
     - name: LOCAL
